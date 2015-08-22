@@ -10,6 +10,7 @@
 -----
 ##### Notes:
 * The image uses Oracle JRE 1.7 u51 & Kafka 0.8.2 (Scala 2.10)
+
 	http://download.oracle.com/otn/java/jdk/7u51-b13/jre-7u51-linux-x64.tar.gz
 	http://apache.stu.edu.tw/kafka/0.8.2.1/kafka_2.10-0.8.2.1.tgz
 * It leverages etcd's "atomically creating in-order keys" for new generated broker_id, using existing one within a pod's lifecycle. 
