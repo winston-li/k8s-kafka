@@ -7,6 +7,7 @@
 * Teardown
 
         ./teardown.sh [--namespace=xxx]
+
 -----
 ##### Notes:
 * The image uses Oracle JRE 1.7 u51 & Kafka 0.8.2 (Scala 2.10)
