@@ -19,6 +19,5 @@
 -----
 ##### TODO:
 * Kubernetes 1.0.x doesn't support emptyDir volumes for containers running as non-root (it's commit in master branch, not v1.0.0 branch, refer to https://github.com/kubernetes/kubernetes/pull/9384 & https://github.com/kubernetes/kubernetes/issues/12627). Use root rather than kafka user instead at this moment.
-* How to decouple the deployment assumption of etcd & container? It's guaranteed that etcd must have been serving on master, but not necessary on minions/nodes. 
-	* Any way to access master's etcd from a container on minions?
-	* To specify it as environment variable on yaml is a way, any more interoperable ways among clusters? 
+* To decouple the deployment assumption of etcd & container. It's guaranteed that etcd must have been serving on master, but not necessary on minions/nodes. 
+	* Query kubernetes service's endpoint to construct etcd2's endpoint on master.
