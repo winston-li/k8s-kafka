@@ -20,7 +20,7 @@ else
   echo "create a new broker id: ${BROKER_ID}"
 fi
 
-sed -i "s/%%BROKER_ID%%/`echo ${BROKER_ID}`/g;s/%%ZOOKEEPER_CONNECT%%/`echo ${ZOOKEEPER_CONNECT}`/g" /opt/kafka/config/server.properties
+sed -i "s/%%BROKER_ID%%/`echo ${BROKER_ID}`/g;s/%%ZOOKEEPER_CONNECT%%/`echo ${ZOOKEEPER_CONNECT}`/g;s/%%IP%%/$(hostname -i)/g" /opt/kafka/config/server.properties
 
 #export CLASSPATH=$CLASSPATH:/opt/kafka/lib/slf4j-log4j12.jar
 #export JMX_PORT=7203
