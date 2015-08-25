@@ -8,8 +8,9 @@
 #ETCD2_ENDPOINT="$(ip route | awk '/\<default via\>/ { print $3}'):2379"
 KUBE_TOKEN=$(cat /var/run/secrets/kubernetes.io/serviceaccount/token)
 ETCD2_ENDPOINT="$(curl -k https://${KUBERNETES_SERVICE_HOST}/api/v1/namespaces/default/endpoints/kubernetes -H "Authorization: Bearer ${KUBE_TOKEN}" | jq -r '.subsets[ ].addresses[].ip'):2379"
+echo "etcd2 endpoint: ${ETCD2_ENDPOINT}"
 
-if [ -f /kafka_data/data/myid ]; then
+if [ -r /kafka_data/data/myid ]; then
   BROKER_ID=`(cat /kafka_data/data/myid)`
   echo "use existing broker id: ${BROKER_ID}"
 else
@@ -20,7 +21,9 @@ else
   echo "create a new broker id: ${BROKER_ID}"
 fi
 
-sed -i "s/%%BROKER_ID%%/`echo ${BROKER_ID}`/g;s/%%ZOOKEEPER_CONNECT%%/`echo ${ZOOKEEPER_CONNECT}`/g;s/%%IP%%/$(hostname -i)/g" /opt/kafka/config/server.properties
+echo "zookeeper.connect=${ZOOKEEPER_CONNECT}"
+#Use "#" as delimiter because ZOOKEEPER_CONNECT may contain generally used delimiter "/"
+sed -i "s#%%BROKER_ID%%#`echo ${BROKER_ID}`#g;s#%%ZOOKEEPER_CONNECT%%#`echo ${ZOOKEEPER_CONNECT}`#g;s#%%IP%%#$(hostname -i)#g" /opt/kafka/config/server.properties
 
 #export CLASSPATH=$CLASSPATH:/opt/kafka/lib/slf4j-log4j12.jar
 #export JMX_PORT=7203
