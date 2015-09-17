@@ -8,7 +8,7 @@ EXPOSE 9092
 RUN yum update -y
 RUN rpm --rebuilddb && yum install -y install wget tar && yum clean all \
     && wget -q -O - --no-cookies --no-check-certificate --header "Cookie: oraclelicense=accept-securebackup-cookie" "http://download.oracle.com/otn-pub/java/jdk/7u51-b13/jre-7u51-linux-x64.tar.gz" | tar -xzf - -C /opt \
-    && wget -q -O - http://apache.stu.edu.tw/kafka/${KAFKA_VERSION}/${KAFKA_RELEASE_TAG}.tgz | tar -xzf - -C /opt \
+    && wget -q -O - http://apache.mirrors.pair.com/kafka/${KAFKA_VERSION}/${KAFKA_RELEASE_TAG}.tgz | tar -xzf - -C /opt \
     && mv /opt/${KAFKA_RELEASE_TAG} /opt/kafka 
 RUN alternatives --install /usr/bin/java java /opt/jre1.7.0_51/bin/java 1
 
