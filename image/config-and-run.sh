@@ -7,7 +7,7 @@
 
 #ETCD2_ENDPOINT="$(ip route | awk '/\<default via\>/ { print $3}'):2379"
 KUBE_TOKEN=$(cat /var/run/secrets/kubernetes.io/serviceaccount/token)
-ETCD2_ENDPOINT="$(curl -k https://${KUBERNETES_SERVICE_HOST}/api/v1/namespaces/default/endpoints/kubernetes -H "Authorization: Bearer ${KUBE_TOKEN}" | jq -r '.subsets[ ].addresses[].ip'):2379"
+ETCD2_ENDPOINT="$(curl -k https://${KUBERNETES_SERVICE_HOST}/api/v1/namespaces/default/endpoints/kubernetes -H "Authorization: Bearer ${KUBE_TOKEN}" | jq -r '.subsets[0].addresses[0].ip'):2379"
 echo "etcd2 endpoint: ${ETCD2_ENDPOINT}"
 
 if [ -r /kafka_data/data/myid ]; then
