@@ -34,7 +34,7 @@ items:
       spec:
         containers:
         - name: kafka
-          image: quay.io/draft/k8s-kafka:v1.2
+          image: quay.io/draft/k8s-kafka:0.8.2.1_v1.0
           resources:
             limits:
               cpu: 2
@@ -45,7 +45,7 @@ items:
           - name: KAFKA_JVM_PERFORMANCE_OPTS
             value: "-XX:PermSize=48m -XX:MaxPermSize=48m -XX:+UseG1GC -XX:MaxGCPauseMillis=20 -XX:InitiatingHeapOccupancyPercent=35"
           - name: ZOOKEEPER_CONNECT
-            value: "zookeeper:2181/chroot/drama"
+            value: "$(ZOOKEEPER_1_SERVICE_HOST):$(ZOOKEEPER_1_SERVICE_PORT),$(ZOOKEEPER_2_SERVICE_HOST):$(ZOOKEEPER_2_SERVICE_PORT),$(ZOOKEEPER_3_SERVICE_HOST):$(ZOOKEEPER_3_SERVICE_PORT)/chroot/drama/kafka"
           - name: POD_NAMESPACE
             valueFrom:
               fieldRef:
