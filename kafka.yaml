@@ -36,8 +36,8 @@ items:
         - name: kafka
           image: quay.io/draft/k8s-kafka:0.8.2.1_v1.0
           resources:
-            limits:
-              cpu: 2
+            requests:
+              cpu: 4
               memory: 8Gi 
           env:
           - name: KAFKA_HEAP_OPTS
