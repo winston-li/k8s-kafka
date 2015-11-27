@@ -32,7 +32,7 @@ RUN chmod a+x ./bin/config-and-run.sh && \
     chown -R kafka.kafka /opt/kafka /kafka_data && \
     chmod o+w -R /opt/kafka /kafka_data
 
-VOLUME [ "/kafka_data/data", "/kafka_data/log" ]
+VOLUME ["/kafka_data/data","/kafka_data/log"]
 
 USER kafka
 

@@ -18,5 +18,5 @@
 
 -----
 ##### TODO:
-* Kubernetes 1.0.x doesn't support emptyDir volumes for containers running as non-root (it's commit in master branch, not v1.0.0 branch, refer to https://github.com/kubernetes/kubernetes/pull/9384 & https://github.com/kubernetes/kubernetes/issues/12627). Use root rather than kafka user instead at this moment. (Done: It's verified OK in kubernetes 1.1.1 in using kafka user instead of root)
+* ~~Kubernetes 1.0.x doesn't support emptyDir volumes for containers running as non-root (it's commit in master branch, not v1.0.0 branch, refer to https://github.com/kubernetes/kubernetes/pull/9384 & https://github.com/kubernetes/kubernetes/issues/12627). Use root rather than kafka user instead at this moment.~~ (Done: It's verified OK in kubernetes 1.1.1 in using kafka user instead of root)
 
