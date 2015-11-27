@@ -34,6 +34,6 @@ RUN chmod a+x ./bin/config-and-run.sh && \
 
 VOLUME [ "/kafka_data/data", "/kafka_data/log" ]
 
-#USER kafka
+USER kafka
 
 CMD ["/opt/kafka/bin/config-and-run.sh"]
