@@ -1,4 +1,4 @@
-FROM centos:latest
+FROM centos:7
 
 ENV KAFKA_VERSION 0.8.2.1
 ENV SCALA_VERSION 2.10
@@ -33,6 +33,8 @@ RUN chmod a+x ./bin/config-and-run.sh && \
     chmod o+w -R /opt/kafka /kafka_data
 
 VOLUME ["/kafka_data/data","/kafka_data/log"]
+
+RUN find / -perm /6000 -type f -exec chmod a-s {} \; || true
 
 USER kafka
 
