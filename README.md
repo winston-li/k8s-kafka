@@ -1,4 +1,6 @@
 # k8s-kafka: kafka cluster of DRAFT on Kubernetes
+[![Docker Repository on Quay](https://quay.io/repository/draft/k8s-kafka/status "Docker Repository on Quay")](https://quay.io/repository/draft/k8s-kafka)
+
 ##### Steps:
 * Build docker image via Quay.io
 * Create kuberbetes pods & service
