@@ -34,7 +34,7 @@ items:
       spec:
         containers:
         - name: kafka
-          image: quay.io/draft/k8s-kafka:0.8.2.1_v1.1
+          image: quay.io/draft/k8s-kafka:0.8.2.1_v1.2
           resources:
             requests:
               cpu: 4
